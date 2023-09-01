@@ -115,3 +115,107 @@ void mergesort(int arr[], int left, int right) {
     }
 }
 
+
+void swap(int* a,int* b)
+{
+	*a = *a ^ *b;
+	*b = *a ^ *b;
+	*a = *a ^ *b;
+}
+
+void sortt(int arr[],int en)
+{
+	for(int i=0;i<=en;i++){
+		for(int j=i+1;j<=en;j++)
+		{
+			if(arr[i] > arr[j])
+			{
+			    swap(&arr[i] ,&arr[j]);
+			}
+		}
+}
+}
+
+
+
+int binarysearch(int arr[],int st , int en,int x)
+{  
+	int w=0;
+
+	printf("first we need to sort the array to use binary search: \n");
+
+         sortt(arr,en);
+
+	printf("left pointer is on:  %d \n",st);
+	printf("right  pointer is on:  %d \n",en);
+
+         while(st <=en){   
+	int mid=(st+en)/2;
+         
+	printf("middle element is at index: \n",mid);
+	printf("Middle element:  %d\n",arr[mid]);
+
+	if(arr[mid]==x)
+	{
+		w=1;
+		printf("element is present at index: %d ",mid);
+		break;	
+	}
+	
+
+       else if(arr[mid] > x){
+	      printf("as we could see middle element is greater than  target we would take right pointer to mid - 1, to cut the array which we don't require to search \n ");
+             en=mid-1;
+	     printf("now right pointer is at %d \n",en);
+       }
+	else{
+		
+	      printf("as we could see middle element is smaller  than  target we would take left  pointer to mid +  1, to cut the array which we don't require to search \n ");
+	    
+	      st=mid+1;
+
+	      printf("now left pointer is at %d \n",st);
+
+
+	}
+	}
+
+ 	if(w==0){
+	printf("as we could see target element is not present in array : ");
+	}
+
+
+	return -1;
+}
+
+
+
+
+
+// Partition the array using the last element as the pivot
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];  // Choosing the pivot as the last element
+    int i = (low - 1);      // Index of smaller element
+
+    for (int j = low; j <= high - 1; j++) {
+        // If the current element is smaller than or equal to the pivot
+        if (arr[j] <= pivot) {
+            i++;  // Increment index of smaller element
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+
+// QuickSort function
+void quicksort(int arr[], int low, int high) {
+    if (low < high) {
+        // Partition the array into two subarrays
+        int pi = partition(arr, low, high);
+
+        // Recursively sort the subarrays
+        quicksort(arr, low, pi - 1);
+        quicksort(arr, pi + 1, high);
+    }
+}
