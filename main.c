@@ -3,7 +3,7 @@
 
 int main(){
           
-	 printf("-----------------------------------------------Hello Sir, What do you want to lean?---------------------------------------------------------------\n");
+	 printf("-----------------------------------------------Hello Sir, What do you want to learn?---------------------------------------------------------------\n");
 	 printf("Here's the  List of topics we could do: \n");
        	 printf("1. Press 1 for merge sort. \n");
 
@@ -11,7 +11,7 @@ int main(){
 	
        	 printf("3. Press 3 for Binary search. \n");
 	
-       	 printf("1. Press 1 for Linear Search. \n");
+       	 printf("4. Press 1 for Linear Search. \n");
       
 
            
@@ -20,7 +20,7 @@ int main(){
 	scanf("%d ",&choice);
 
 	int n;
-	printf("Enter size of array: \n");
+	printf("\nEnter size of array: \n");
         scanf("%d",&n);      
 
 	int arr[n];
@@ -40,10 +40,17 @@ int main(){
 		
 		 break;
          case 2:
+		 
 		 quicksort(arr,0,n-1);
-		 for(int i=0;i<n;i++){
-			 printf("%d ",arr[i]);
-		 }
+		printf("\n");
+		printf("array after sorting: \n");
+		printf("\n");
+		for(int i=0;i<n;i++)
+		{
+			printf("%d  ",arr[i]);
+		}
+ 		
+		 
 		 break;
 	case 3:
 	       int x;
@@ -57,5 +64,5 @@ int main(){
           }
       	
      
-
+       
 } 

@@ -118,9 +118,10 @@ void mergesort(int arr[], int left, int right) {
 
 void swap(int* a,int* b)
 {
-	*a = *a ^ *b;
-	*b = *a ^ *b;
-	*a = *a ^ *b;
+	int t=*a;
+	*a=*b;
+	*b=t;
+
 }
 
 void sortt(int arr[],int en)
@@ -192,30 +193,84 @@ int binarysearch(int arr[],int st , int en,int x)
 
 
 
-// Partition the array using the last element as the pivot
-int partition(int arr[], int low, int high) {
-    int pivot = arr[high];  // Choosing the pivot as the last element
-    int i = (low - 1);      // Index of smaller element
+// function to find the partition position
+int partition(int array[], int low, int high) {
+    
+	printf("Lets take pivot as last element of array: %d \n",array[high]);
 
-    for (int j = low; j <= high - 1; j++) {
-        // If the current element is smaller than or equal to the pivot
-        if (arr[j] <= pivot) {
-            i++;  // Increment index of smaller element
-            swap(&arr[i], &arr[j]);
-        }
+  // select the rightmost element as pivot
+  int pivot = array[high];
+       
+      printf("\n");
+
+      printf("take a  pointer at index  i: %d \n",low -1);
+  // pointer for greater element
+  int i = (low - 1);
+
+  // traverse each element of the array
+  // compare them with the pivot
+  
+   printf("\n");
+   printf("traverse from left if any element greater than pivot \n ");
+   printf("increment left pointer and swap values of indx i and j \n");
+  for (int j = low; j < high; j++) {
+    if (array[j] <= pivot) {
+      
+	    printf("\n");
+	    printf("as array[j] is smaller than pivot: %d  %d  \n",array[j],pivot);
+	    printf("\n");
+	    printf("we will swap values of both, \n");
+      // if element smaller than pivot is found
+      // swap it with the greater element pointed by i
+      i++;
+
+      // swap element at i with element at j
+      swap(&array[i], &array[j]);
     }
-    swap(&arr[i + 1], &arr[high]);
-    return (i + 1);
+  }
+  	printf("\n");
+	printf("swap pivot element with greater elememt ar index i \n");
+  // swap the pivot element with the greater element at i
+  swap(&array[i + 1], &array[high]);
+       
+
+   printf("\n");
+   printf("return partition index: %d \n",i+1);
+  // return the partition point
+  return (i + 1);
 }
 
-// QuickSort function
-void quicksort(int arr[], int low, int high) {
-    if (low < high) {
-        // Partition the array into two subarrays
-        int pi = partition(arr, low, high);
+void quicksort(int array[], int low, int high) {
+  if (low  < high) {
+	
+	  printf("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% New Call %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");		
+	printf("\n");  
+     printf("we have a left pointer on index: \n %d",low);
+     printf("\n");
+     printf("we have right pointer on index: \n%d",high);
+     printf("\n");
+	printf("elements in array between left to right\n");
+     printf("\n");
+	for(int i=low;i<high;i++){
+	 printf("%d ",array[i]);
+	}
 
-        // Recursively sort the subarrays
-        quicksort(arr, low, pi - 1);
-        quicksort(arr, pi + 1, high);
-    }
+	printf("\n");
+     printf("now we need a pivot lets call partition function: \n");
+       printf("\n");
+     printf("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% We are now in partion function to get partiton of array:  \n");
+     printf("\n");
+    int pi = partition(array, low, high);
+       
+    printf("\n");
+
+    printf("recursively call for left to partition and partition to right ");
+    printf("\n");
+    // recursive call on the left of pivot
+    quicksort(array, low, pi - 1);
+
+    // recursive call on the right of pivot
+    quicksort(array, pi + 1, high);
+  }
 }
+
