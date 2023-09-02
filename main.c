@@ -11,7 +11,8 @@ int main(){
 	
        	 printf("3. Press 3 for Binary search. \n");
 	
-       	 printf("4. Press 1 for Linear Search. \n");
+       	 printf("4. Press 4  for bubble sort. \n");
+
       
 
            
@@ -58,6 +59,17 @@ int main(){
 	       scanf("%d",&x);
 		binarysearch(arr,0,n-1,x);
          	break;
+
+	case 4:
+		bubblesort(arr,n);
+
+		printf("\n");
+		printf("array after sort:  \n");
+		printf("\n");
+		for(int i=0;i<n;i++)
+		{
+			printf("%d  ",arr[i]);
+		}
 
 	default:
 		printf("enter valid number");

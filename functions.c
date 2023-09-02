@@ -274,3 +274,34 @@ void quicksort(int array[], int low, int high) {
   }
 }
 
+
+void bubblesort(int arr[], int n) {
+    int swapped; // A flag to check if any swaps were made in a pass
+
+    // We start by assuming that swaps will be needed
+    for (int i = 0; i < n - 1; i++) {
+        swapped = 0;
+
+        // In each pass, we compare adjacent elements and swap them if they are in the wrong order
+        for (int j = 0; j < n - i - 1; j++) {
+            printf("Comparing elements at indices %d and %d\n", j, j + 1);
+            printf("Elements to compare: %d and %d\n", arr[j], arr[j + 1]);
+
+            if (arr[j] > arr[j + 1]) {
+                // Swap arr[j] and arr[j+1]
+                printf("Swapping elements %d and %d\n", arr[j], arr[j + 1]);
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = 1; // Set the flag to indicate that a swap occurred
+            }
+        }
+
+        // If no swaps were made in this pass, the array is already sorted
+        if (!swapped) {
+            printf("No swaps were made in this pass; the array is already sorted.\n");
+            break;
+        }
+    }
+}
+

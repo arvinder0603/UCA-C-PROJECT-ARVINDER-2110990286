@@ -5,3 +5,5 @@ int  binarysearch(int arr[],int st,int en,int x);
 
 
 void quicksort(int arr[],int st,int en);
+
+void bubblesort(int arr[],int n);
